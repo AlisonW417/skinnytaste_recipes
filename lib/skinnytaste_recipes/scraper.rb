@@ -13,4 +13,17 @@ class SkinnytasteRecipes::Scraper
     #end 
   end 
   
+  def self.get_recipes(category) 
+    url = "#{category.url}"
+    doc = Nokogiri::HTML(open(url))
+    #binding.pry 
+    recipe = doc.css("div.archive-post")
+    recipe.each do |recipe|
+      name = recipe.css("a").attr("title").text 
+      url = recipe.css("a").attr("href").value
+      SkinnytasteRecipes::Recipe.new(name, url)
+    end 
+  end 
+    
+  
 end 

@@ -13,7 +13,7 @@ class SkinnytasteRecipes::CLI
   
   def display_categories 
     puts "Please choose a recipe category. \nEnter the number for the category you'd like to view (1-14):"
-    binding.pry
+    #binding.pry
     @category.each.with_index(1) do |cat, index|
       puts "#{index}. #{cat.name}"
     end 
@@ -35,6 +35,7 @@ class SkinnytasteRecipes::CLI
   
   def display_recipes(category_input)
     puts "Here are the recipes for you the category you selected:"
+    SkinnytasteRecipes::Scraper.get_recipes(category_input)
     # update this to interpolate category once category class is created
     # add code here to display the recipes 
   end
