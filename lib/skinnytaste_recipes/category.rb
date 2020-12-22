@@ -1,11 +1,12 @@
 class SkinnytasteRecipes::Category 
-  attr_accessor :name, :url 
+  attr_accessor :name, :url, :recipes 
   
   @@all = []
   
   def initialize(name, url)
     @name = name 
     @url = url
+    @recipes = []
     save 
   end 
   
@@ -17,5 +18,11 @@ class SkinnytasteRecipes::Category
     SkinnytasteRecipes::Scraper.get_categories if @@all.empty?
     @@all
   end 
-    
+  
+  def find_recipes 
+    SkinnytasteRecipes::Recipe.all.select do |recipe|
+      recipe.category == self 
+    end 
+  end 
+  
 end 

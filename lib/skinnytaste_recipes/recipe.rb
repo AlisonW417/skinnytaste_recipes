@@ -14,7 +14,7 @@ class SkinnytasteRecipes::Recipe
   end 
   
   def self.all 
-    SkinnytasteRecipes::Scraper.get_recipes(category) in @@all.empty?
+    SkinnytasteRecipes::Scraper.get_recipes(category) if @@all.empty?
     @@all 
   end 
   

@@ -4,7 +4,7 @@ class SkinnytasteRecipes::CLI
     find_categories
     display_categories
     get_user_category
-    display_recipes
+    display_recipes(category_input)
   end 
   
   def find_categories 
@@ -34,9 +34,11 @@ class SkinnytasteRecipes::CLI
   end 
   
   def display_recipes(category_input)
-    puts "Here are the recipes for you the category you selected:"
-    SkinnytasteRecipes::Scraper.get_recipes(category_input)
-    # update this to interpolate category once category class is created
+    category = @category[category_input - 1]
+    binding.pry
+    category.find_recipes
+    puts "Here are the recipes for you the #{category.name} category:"
+    
     # add code here to display the recipes 
   end
 end 
