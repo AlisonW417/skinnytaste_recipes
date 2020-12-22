@@ -2,6 +2,7 @@ require_relative "./skinnytaste_recipes/version"
 require_relative "./skinnytaste_recipes/cli"
 require_relative "./skinnytaste_recipes/scraper"
 require_relative "./skinnytaste_recipes/category"
+require_relative "./skinnytaste_recipes/recipe"
 
 require 'pry'
 require 'nokogiri'

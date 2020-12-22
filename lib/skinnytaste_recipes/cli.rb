@@ -13,6 +13,7 @@ class SkinnytasteRecipes::CLI
   
   def display_categories 
     puts "Please choose a recipe category. \nEnter the number for the category you'd like to view (1-14):"
+    binding.pry
     @category.each.with_index(1) do |cat, index|
       puts "#{index}. #{cat.name}"
     end 
