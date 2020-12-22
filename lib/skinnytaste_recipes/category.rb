@@ -20,9 +20,7 @@ class SkinnytasteRecipes::Category
   end 
   
   def find_recipes 
-    SkinnytasteRecipes::Recipe.all.select do |recipe|
-      recipe.category == self 
-    end 
+    SkinnytasteRecipes::Scraper.get_recipes(self) if @recipes.empty?
   end 
   
 end 

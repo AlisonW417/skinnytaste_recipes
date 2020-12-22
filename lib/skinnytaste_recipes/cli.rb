@@ -35,10 +35,12 @@ class SkinnytasteRecipes::CLI
   
   def display_recipes(category_input)
     category = @category[category_input - 1]
-    binding.pry
+    #binding.pry
     category.find_recipes
     puts "Here are the recipes for you the #{category.name} category:"
-    
+    category.recipes.each.with_index(1) do |recipe, index|
+      puts "#{index}. #{recipe.name}"
+    end 
     # add code here to display the recipes 
   end
 end 

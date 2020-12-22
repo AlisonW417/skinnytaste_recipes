@@ -21,7 +21,7 @@ class SkinnytasteRecipes::Scraper
     recipe.each do |recipe|
       name = recipe.css("a").attr("title").text 
       url = recipe.css("a").attr("href").value
-      SkinnytasteRecipes::Recipe.new(name, url)
+      SkinnytasteRecipes::Recipe.new(name, url, category)
     end 
   end 
     
