@@ -1,0 +1,3 @@
+class SkinnytasteRecipes::Category 
+  
+end 
