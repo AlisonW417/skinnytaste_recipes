@@ -1,9 +1,14 @@
 class SkinnytasteRecipes::CLI 
   def call 
     puts "Welcome to the Skinnytaste Recipe Selector!"
-    find_categories
-    display_categories
-    get_user_category
+    @input = ""
+    until @input == "exit"
+      find_categories
+      display_categories
+      get_user_category
+      check_in 
+    end 
+    goodbye
   end 
   
   def find_categories 
@@ -25,7 +30,12 @@ class SkinnytasteRecipes::CLI
   
   def get_user_category
     category_input = gets.strip.to_i 
-    display_recipes(category_input) if valid_input(category_input, @category)
+    if valid_input(category_input, @category)
+      display_recipes(category_input) 
+    else 
+      puts "Invalid input. Please enter a number from the category list."
+      get_user_category
+    end 
   end 
   
   def valid_input(input, data)
@@ -59,5 +69,13 @@ class SkinnytasteRecipes::CLI
     end 
   end
   
+  def check_in 
+    puts "Are you ready to head to the store for ingredients?"
+    puts "If you are finished, enter exit. Enter any key to continue viewing recipes." 
+    @input = gets.strip 
+  end 
   
+  def goodbye
+    puts "Happy cooking!"
+  end 
 end 
