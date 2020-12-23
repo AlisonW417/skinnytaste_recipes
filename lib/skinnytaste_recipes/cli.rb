@@ -1,6 +1,6 @@
 class SkinnytasteRecipes::CLI 
   def call 
-    puts "Welcome to the Skinnytaste Recipe Selector!"
+    puts "\nWelcome to the Skinnytaste Recipe Selector!"
     @input = ""
     until @input == "exit"
       find_categories
@@ -16,7 +16,7 @@ class SkinnytasteRecipes::CLI
   end 
   
   def display_categories 
-    puts "Please choose a recipe category. \nEnter the number for the category you'd like to view (1-14):"
+    puts "\nPlease choose a recipe category. \n\nEnter the number for the category you'd like to view (1-14):"
     @category.each.with_index(1) do |cat, index|
       puts "#{index}. #{cat.name}"
     end
@@ -27,7 +27,7 @@ class SkinnytasteRecipes::CLI
     if valid_input(category_input, @category)
       display_recipes(category_input) 
     else 
-      puts "Invalid input. Please enter a number from the category list."
+      puts "\nInvalid input. Please enter a number from the category list."
       get_user_category
     end 
   end 
@@ -39,7 +39,7 @@ class SkinnytasteRecipes::CLI
   def display_recipes(category_input)
     category = @category[category_input - 1]
     category.find_recipes
-    puts "Here are the recipes for the #{category.name} category:"
+    puts "\nHere are the recipes for the #{category.name} category:"
     category.recipes.each.with_index(1) do |recipe, index|
       puts "#{index}. #{recipe.name}"
     end
@@ -47,7 +47,7 @@ class SkinnytasteRecipes::CLI
   end
   
   def get_user_recipe(category)
-    puts "Choose a recipe to see the ingredient list (1-30):"
+    puts "\nChoose a recipe to see the ingredient list (1-30)"
     recipe_input = gets.strip.to_i 
     if recipe_input.between?(1, 30)
       recipe = category.recipes[recipe_input - 1]
@@ -56,18 +56,17 @@ class SkinnytasteRecipes::CLI
         puts "#{ingredient}"
       end 
     else 
-      puts "Please enter a valid recipe number."
+      puts "\nPlease enter a valid recipe number."
       get_user_recipe(category)
     end 
   end
   
   def check_in 
-    puts "Are you ready to head to the store for ingredients?"
-    puts "If you are finished, enter exit. Enter any key to continue viewing recipes." 
+    puts "\nAre you ready to head to the store for ingredients? \nIf you are finished, enter exit. Enter any key to continue viewing recipes." 
     @input = gets.strip 
   end 
   
   def goodbye
-    puts "Happy cooking!"
+    puts "\nHappy cooking!"
   end 
 end 
