@@ -17,15 +17,9 @@ class SkinnytasteRecipes::CLI
   
   def display_categories 
     puts "Please choose a recipe category. \nEnter the number for the category you'd like to view (1-14):"
-    #binding.pry
     @category.each.with_index(1) do |cat, index|
       puts "#{index}. #{cat.name}"
-    end 
-    #category.each.with_index(1) do |cat, index|
-      #puts "#{index}. #{cat.text}"
-    #end 
-    # SkinnytasteRecipes::Scraper.get_categories
-    # move this to category class later
+    end
   end 
   
   def get_user_category
@@ -44,7 +38,6 @@ class SkinnytasteRecipes::CLI
   
   def display_recipes(category_input)
     category = @category[category_input - 1]
-    #binding.pry
     category.find_recipes
     puts "Here are the recipes for the #{category.name} category:"
     category.recipes.each.with_index(1) do |recipe, index|
@@ -56,7 +49,6 @@ class SkinnytasteRecipes::CLI
   def get_user_recipe(category)
     puts "Choose a recipe to see the ingredient list (1-30):"
     recipe_input = gets.strip.to_i 
-    #binding.pry
     if recipe_input.between?(1, 30)
       recipe = category.recipes[recipe_input - 1]
       recipe.find_ingredients

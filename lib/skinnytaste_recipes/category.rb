@@ -22,5 +22,4 @@ class SkinnytasteRecipes::Category
   def find_recipes 
     SkinnytasteRecipes::Scraper.get_recipes(self) if @recipes.empty?
   end 
-  
 end 

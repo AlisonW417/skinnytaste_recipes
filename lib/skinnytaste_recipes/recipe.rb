@@ -28,5 +28,4 @@ class SkinnytasteRecipes::Recipe
   def find_ingredients 
     SkinnytasteRecipes::Scraper.get_ingredients(self) if @ingredients.empty?
   end
-  
 end 
