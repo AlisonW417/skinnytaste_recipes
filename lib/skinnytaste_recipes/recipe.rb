@@ -1,5 +1,5 @@
 class SkinnytasteRecipes::Recipe 
-  attr_accessor :name, :url, :category 
+  attr_accessor :name, :url, :category, :ingredients 
   
   @@all = []
   
@@ -7,6 +7,7 @@ class SkinnytasteRecipes::Recipe
     @name = name 
     @url = url 
     @category = category
+    @ingredients = [] 
     add_to_category
     save
   end 

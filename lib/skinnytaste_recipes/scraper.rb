@@ -24,6 +24,16 @@ class SkinnytasteRecipes::Scraper
       SkinnytasteRecipes::Recipe.new(name, url, category)
     end 
   end 
+  
+  def self.get_ingredients(recipe)
+    url = "#{event.url}"
+    doc = Nokogiri::HTML(open(url))
+    list = doc.css("li.wprm-recipe-ingredient")
+    list.each do |li|
+      ingredient = li.text.strip 
+    end 
+    recipe.ingredients << ingredient 
+  end 
     
   
 end 
