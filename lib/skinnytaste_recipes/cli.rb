@@ -4,8 +4,6 @@ class SkinnytasteRecipes::CLI
     find_categories
     display_categories
     get_user_category
-    find_recipes
-    
   end 
   
   def find_categories 
@@ -42,23 +40,24 @@ class SkinnytasteRecipes::CLI
     category.recipes.each.with_index(1) do |recipe, index|
       puts "#{index}. #{recipe.name}"
     end
-    data = category.recipes 
-    puts "Choose a recipe to see the ingredient list (1-30):"
-    recipe_input = gets.strip.to_i 
-    display_ingredients(recipe_input) if valid_input(recipe_input, data)
+    get_user_recipe(category)
   end
   
-  def display_ingredients(recipe_input)
-    
-  end 
-  
-  #def get_user_recipe
+  def get_user_recipe(category)
+    puts "Choose a recipe to see the ingredient list (1-30):"
+    recipe_input = gets.strip.to_i 
     #binding.pry
-    #data = category.recipes
-    #puts "Choose a recipe to see the ingredient list (enter number):"
-    #recipe_input = gets.strip.to_i 
-    #display_ingredients(recipe_input) if valid_input(recipe_input, data)
-  #end 
+    if recipe_input.between?(1, 30)
+      recipe = category.recipes[recipe_input - 1]
+      recipe.find_ingredients
+      recipe.ingredients.each do |ingredient|
+        puts "#{ingredient}"
+      end 
+    else 
+      puts "Please enter a valid recipe number."
+      get_user_recipe(category)
+    end 
+  end
   
   
 end 
