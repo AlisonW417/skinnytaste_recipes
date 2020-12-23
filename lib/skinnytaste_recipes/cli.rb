@@ -6,7 +6,6 @@ class SkinnytasteRecipes::CLI
       find_categories
       display_categories
       get_user_category
-      check_in 
     end 
     goodbye
   end 
@@ -44,7 +43,6 @@ class SkinnytasteRecipes::CLI
       puts "#{index}. #{recipe.name}"
     end
     get_user_recipe(category)
-    #instructions?(category)
   end
   
   def get_user_recipe(category)
@@ -60,17 +58,21 @@ class SkinnytasteRecipes::CLI
       puts "\nPlease enter a valid recipe number."
       get_user_recipe(category)
     end
+    instructions?(recipe)
   end
   
-  #def instructions?(category)
-    #puts "\nWould you like to see the instructions for making this recipe? (y/n)"
-    #answer = gets.strip 
-    #if answer == "y"
-      #display_instructions 
-    #else 
-      #check_in
-    #end 
-  #end 
+  def instructions?(recipe)
+    puts "\nWould you like to see the instructions for making this recipe? (y/n)"
+    answer = gets.strip 
+    if answer == "y"
+      recipe.find_instructions 
+      recipe.instructions.each.with_index(1) do |step, index|
+        puts "#{index}. #{step}"
+      end 
+    else 
+      check_in
+    end 
+  end 
   
   def check_in 
     puts "\nAre you ready to head to the store for ingredients? \nIf you are finished, enter exit. Enter any key to continue viewing recipes." 
