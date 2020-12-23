@@ -30,4 +30,14 @@ class SkinnytasteRecipes::Scraper
       recipe.ingredients << ingredient 
     end 
   end 
+  
+  def self.get_instructions(recipe)
+    url = "#{recipe.url}"
+    doc = Nokogiri::HTML(open(url))
+    list = doc.css("li.wprm-recipe-instruction")
+    list.each do |li|
+      step = li.text.strip 
+      recipe.instructions << step 
+    end 
+  end 
 end 

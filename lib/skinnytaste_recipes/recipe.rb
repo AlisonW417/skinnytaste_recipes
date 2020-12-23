@@ -1,5 +1,5 @@
 class SkinnytasteRecipes::Recipe 
-  attr_accessor :name, :url, :category, :ingredients 
+  attr_accessor :name, :url, :category, :ingredients, :instructions  
   
   @@all = []
   
@@ -8,6 +8,7 @@ class SkinnytasteRecipes::Recipe
     @url = url 
     @category = category
     @ingredients = [] 
+    @instructions = []
     add_to_category
     save
   end 
@@ -28,4 +29,8 @@ class SkinnytasteRecipes::Recipe
   def find_ingredients 
     SkinnytasteRecipes::Scraper.get_ingredients(self) if @ingredients.empty?
   end
+  
+  def find_instructions 
+    SkinnytasteRecipes::Scraper.get_instructions(self) if @instructions.empty?
+  end 
 end 

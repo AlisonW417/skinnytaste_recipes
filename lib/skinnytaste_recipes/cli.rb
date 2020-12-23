@@ -44,6 +44,7 @@ class SkinnytasteRecipes::CLI
       puts "#{index}. #{recipe.name}"
     end
     get_user_recipe(category)
+    #instructions?(category)
   end
   
   def get_user_recipe(category)
@@ -58,8 +59,18 @@ class SkinnytasteRecipes::CLI
     else 
       puts "\nPlease enter a valid recipe number."
       get_user_recipe(category)
-    end 
+    end
   end
+  
+  #def instructions?(category)
+    #puts "\nWould you like to see the instructions for making this recipe? (y/n)"
+    #answer = gets.strip 
+    #if answer == "y"
+      #display_instructions 
+    #else 
+      #check_in
+    #end 
+  #end 
   
   def check_in 
     puts "\nAre you ready to head to the store for ingredients? \nIf you are finished, enter exit. Enter any key to continue viewing recipes." 
