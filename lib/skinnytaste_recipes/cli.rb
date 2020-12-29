@@ -69,6 +69,7 @@ class SkinnytasteRecipes::CLI
       recipe.instructions.each.with_index(1) do |step, index|
         puts "#{index}. #{step}"
       end 
+      check_in
     else 
       check_in
     end 
