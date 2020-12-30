@@ -15,7 +15,7 @@ class SkinnytasteRecipes::CLI
   end 
   
   def display_categories 
-    puts "\nPlease choose a recipe category. \n\nEnter the number for the category you'd like to view (1-14):"
+    puts "\nPlease choose a recipe category. \nEnter the number for the category you'd like to view (1-14)."
     @category.each.with_index(1) do |cat, index|
       puts "#{index}. #{cat.name}"
     end
@@ -26,7 +26,7 @@ class SkinnytasteRecipes::CLI
     if valid_input(category_input, @category)
       display_recipes(category_input) 
     else 
-      puts "\nInvalid input. Please enter a number from the category list."
+      puts "\nInvalid input. Please enter a number from the category list (1-14)."
       get_user_category
     end 
   end 
@@ -46,7 +46,7 @@ class SkinnytasteRecipes::CLI
   end
   
   def get_user_recipe(category)
-    puts "\nChoose a recipe to see the ingredient list (1-30)"
+    puts "\nChoose a recipe to see the ingredient list (1-30)."
     recipe_input = gets.strip.to_i 
     if recipe_input.between?(1, 30)
       recipe = category.recipes[recipe_input - 1]
@@ -55,7 +55,7 @@ class SkinnytasteRecipes::CLI
         puts "#{ingredient}"
       end 
     else 
-      puts "\nPlease enter a valid recipe number."
+      puts "\nPlease enter a valid recipe number (1-30)."
       get_user_recipe(category)
     end
     instructions?(recipe)
