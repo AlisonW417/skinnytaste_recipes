@@ -51,6 +51,7 @@ class SkinnytasteRecipes::CLI
     if recipe_input.between?(1, 30)
       recipe = category.recipes[recipe_input - 1]
       recipe.find_ingredients
+      puts "\n#{recipe.name} Ingredients:"
       recipe.ingredients.each do |ingredient|
         puts "#{ingredient}"
       end 
@@ -66,6 +67,7 @@ class SkinnytasteRecipes::CLI
     answer = gets.strip 
     if answer == "y"
       recipe.find_instructions 
+      puts "\n#{recipe.name} Instructions:"
       recipe.instructions.each.with_index(1) do |step, index|
         puts "#{index}. #{step}"
       end 

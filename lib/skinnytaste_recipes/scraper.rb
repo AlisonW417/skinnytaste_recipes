@@ -12,7 +12,6 @@ class SkinnytasteRecipes::Scraper
   def self.get_recipes(category) 
     url = "#{category.url}"
     doc = Nokogiri::HTML(open(url))
-    #binding.pry 
     recipe = doc.css("div.archive-post")
     recipe.each do |recipe|
       name = recipe.css("a").attr("title").text 
