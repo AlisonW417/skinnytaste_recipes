@@ -15,10 +15,10 @@ class SkinnytasteRecipes::CLI
   end 
   
   def display_categories 
-    puts "\nPlease choose a recipe category. \nEnter the number for the category you'd like to view (1-14)."
     @category.each.with_index(1) do |cat, index|
       puts "#{index}. #{cat.name}"
     end
+    puts "\nPlease choose a recipe category. \nEnter the number for the category you'd like to view (1-14)."
   end 
   
   def get_user_category
